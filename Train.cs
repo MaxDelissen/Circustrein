@@ -2,7 +2,7 @@
 {
     public class Train
     {
-        public List<Animal> Animals { get; private set; } = new List<Animal>();
+        private List<Animal> Animals = new List<Animal>();
         public List<Wagon> Wagons { get; private set; } = new List<Wagon>();
 
         public bool AddAnimal(Animal animal)
@@ -18,7 +18,9 @@
 
         public void MakeTrain()
         {
-            Animals = Animals.OrderByDescending(animal => animal.Size).ToList();
+            Animals = Animals.OrderByDescending(animal => animal.Size) //Order by size, largest first.
+                             .ThenByDescending(animal => animal.IsCarnivore) //Then by carnivore, carnivores first.
+                             .ToList(); //Back to list.
 
             foreach (Animal animal in Animals)
             {
