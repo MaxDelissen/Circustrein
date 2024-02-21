@@ -2,7 +2,9 @@
 {
     public class Wagon
     {
-        public List<Animal> WagonAnimals { get; private set; } = new List<Animal>();
+        private List<Animal> Animals = new List<Animal>();
+        public IEnumerable<Animal> GetAnimals() => Animals;
+
         public int SpaceLeft { get; private set; } = 10;
 
         public bool AddAnimal(Animal animal)
@@ -12,7 +14,7 @@
             {
                 if (CheckCarnivore(animal))
                 {
-                    WagonAnimals.Add(animal);
+                    Animals.Add(animal);
                     SpaceLeft -= (int)animal.Size;
                     return true;
                 }
@@ -27,7 +29,7 @@
 
         private bool CheckCarnivore(Animal animal)
         {
-            foreach (Animal wagonAnimal in WagonAnimals)
+            foreach (Animal wagonAnimal in Animals)
             {
                 //If the new animal is a carnivore, and bigger or as big as one of the animals in the wagon, return false.
                 //If the new animal is smaller or as small as a carnivore in the wagon, return false.

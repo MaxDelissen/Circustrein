@@ -81,7 +81,8 @@
                 int wagonNumber = train.Wagons.IndexOf(wagon) + 1;
                 Console.WriteLine($"Wagon {wagonNumber}:");
 
-                foreach (Animal animal in wagon.WagonAnimals)
+
+                foreach (Animal animal in wagon.GetAnimals())
                 {
                     string eats = animal.IsCarnivore ? "carnivore" : "herbivore";
                     Console.WriteLine($"{animal.Size} {eats},");
