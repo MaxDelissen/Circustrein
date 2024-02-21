@@ -33,7 +33,7 @@
                         break;
                     }
                 }
-                if (!animalAdded)
+                if (!animalAdded) //If the animal wasn't added to any wagon, create a new wagon and add it there.
                 {
                     Wagon newWagon = new Wagon();
                     newWagon.AddAnimal(animal);

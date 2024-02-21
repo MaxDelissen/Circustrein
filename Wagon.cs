@@ -33,7 +33,8 @@
             {
                 //If the new animal is a carnivore, and bigger or as big as one of the animals in the wagon, return false.
                 //If the new animal is smaller or as small as a carnivore in the wagon, return false.
-                if ((animal.IsCarnivore && animal.Size >= wagonAnimal.Size) || (animal.Size <= wagonAnimal.Size && wagonAnimal.IsCarnivore))
+                if ((animal.IsCarnivore && animal.Size >= wagonAnimal.Size) || 
+                    (animal.Size <= wagonAnimal.Size && wagonAnimal.IsCarnivore))
                 {
                     return false;
                 }
