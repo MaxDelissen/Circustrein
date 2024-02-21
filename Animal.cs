@@ -5,6 +5,12 @@
         public Size Size { get; private set; }
         public bool IsCarnivore { get; private set; }
 
+        public Animal(Size size, bool isCarnivore)
+        {
+            Size = size;
+            IsCarnivore = isCarnivore;
+        }
+
         public Animal(string size, string isCarnivore)
         {
             switch (size)

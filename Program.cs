@@ -21,12 +21,12 @@
                         Print();
                         break;
                     case "r": //Moet dit met "Unit testen"?
-                        train.AddAnimal(new Animal("s", "c"));
-                        train.AddAnimal(new Animal("m", "h"));
-                        train.AddAnimal(new Animal("m", "h"));
-                        train.AddAnimal(new Animal("l", "h"));
-                        train.AddAnimal(new Animal("m", "h"));
-                        train.AddAnimal(new Animal("l", "h"));
+                        train.AddAnimal(new Animal(Size.Small, true));
+                        train.AddAnimal(new Animal(Size.Medium, false));
+                        train.AddAnimal(new Animal(Size.Medium, false));
+                        train.AddAnimal(new Animal(Size.Large, false));
+                        train.AddAnimal(new Animal(Size.Medium, false));
+                        train.AddAnimal(new Animal(Size.Large, false));
                         Console.WriteLine("Preconfigured animals added\n");
                         break;
                     case "c":
