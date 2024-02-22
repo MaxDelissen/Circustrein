@@ -18,8 +18,12 @@
 
         public void MakeTrain()
         {
-            Animals = Animals.OrderByDescending(animal => animal.Size) //Order by size, largest first.
-                             .ThenByDescending(animal => animal.IsCarnivore) //Then by carnivore, carnivores first.
+            //It seems it's actually better to sort the animals by carnivore status first, then by size.
+            //I didn't expect that, but it makes sense if you think long enough about it,
+            //  and it's the only option that makes the tests pass.
+
+            Animals = Animals.OrderByDescending(animal => animal.IsCarnivore) 
+                             .ThenByDescending(animal => animal.Size)
                              .ToList(); //Back to list.
 
             foreach (Animal animal in Animals)
