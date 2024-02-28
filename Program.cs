@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static readonly Train train = new Train();
+        static readonly Train Train = new Train();
 
         static void Main(string[] args)
         {
@@ -14,27 +14,26 @@
                 {
                     case "a":
                         Animal newAnimal = MakeAnimal();
-                        train.AddAnimal(newAnimal);
+                        Train.AddAnimal(newAnimal);
                         break;
                     case "m":
-                        train.MakeTrain();
+                        Train.MakeTrain();
                         Print();
                         break;
-                    case "r": //Moet dit met "Unit testen"?
-                        train.AddAnimal(new Animal(Size.Small, true));
-                        train.AddAnimal(new Animal(Size.Large, false));
-                        train.AddAnimal(new Animal(Size.Large, false));
-                        train.AddAnimal(new Animal(Size.Small, false));
-                        train.AddAnimal(new Animal(Size.Medium, false));
+                    case "r": //Default for testing.
+                        Train.AddAnimal(new Animal(Size.Small, true));
+                        Train.AddAnimal(new Animal(Size.Large, false));
+                        Train.AddAnimal(new Animal(Size.Large, false));
+                        Train.AddAnimal(new Animal(Size.Small, false));
+                        Train.AddAnimal(new Animal(Size.Medium, false));
                         Console.WriteLine("Preconfigured animals added\n");
                         break;
                     case "c":
-                        train.Clear();
+                        Train.Clear();
                         Console.WriteLine("Train cleared\n");
                         break;
                     case "e":
-                        Environment.Exit(0);
-                        break;
+                        return;
                     default:
                         Console.WriteLine("Invalid input");
                         break;
@@ -69,15 +68,15 @@
             return validSize && validCarnivore;
         }
 
-        public static void Print()
+        private static void Print()
         {
             Console.WriteLine("\n");
             Console.WriteLine("-------------------------------------------------------------------------");
             Console.WriteLine();
             int totalSpaceLeft = 0;
-            foreach (Wagon wagon in train.Wagons.OrderBy(wagon => wagon.SpaceLeft).ToList())
+            foreach (Wagon wagon in Train.WagonsResult.OrderBy(wagon => wagon.SpaceLeft).ToList())
             {
-                int wagonNumber = train.Wagons.IndexOf(wagon) + 1;
+                int wagonNumber = Train.WagonsResult.IndexOf(wagon) + 1;
                 Console.WriteLine($"Wagon {wagonNumber}:");
 
 
