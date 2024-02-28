@@ -7,11 +7,14 @@
 
         private List<Wagon> wagonOption1 = new List<Wagon>();
         private List<Wagon> wagonOption2 = new List<Wagon>();
-        private List<Wagon> wagonOption3 = new List<Wagon>();
-        private List<Wagon> wagonOption4 = new List<Wagon>();
 
         public bool AddAnimal(Animal animal)
         {
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+            if (animal == null)
+            {
+                return false; 
+            }
             try
             {
                 animals.Add(animal);
@@ -41,6 +44,8 @@
                     currentWagonList.Add(newWagon);
                 }
             }
+
+            return currentWagonList;
         }
         public void MakeTrain()
         {
@@ -48,14 +53,10 @@
             //I didn't expect that, but it makes sense if you think long enough about it,
             //  and it's the only option that makes the tests pass.
 
-            wagonOption1 = FillWagons(animals.OrderBy(animal => animal.IsCarnivore).ThenBy(animal => animal.Size).ToList());
-            
-            
-            animals = animals.OrderByDescending(animal => animal.IsCarnivore) 
-                             .ThenByDescending(animal => animal.Size)
-                             .ToList(); //Back to list.
+            wagonOption1 = FillWagons(animals.OrderByDescending(animal => animal.IsCarnivore).ThenByDescending(animal => animal.Size).ToList());
+            wagonOption2 = FillWagons(animals.OrderByDescending(animal => animal.Size).ThenByDescending(animal => animal.IsCarnivore).ToList());
 
-            
+            WagonsResult = (wagonOption1.Count < wagonOption2.Count) ? wagonOption1 : wagonOption2;
         }
 
         public void Clear()
