@@ -49,10 +49,6 @@
         }
         public void MakeTrain()
         {
-            //It seems it's actually better to sort the animals by carnivore status first, then by size.
-            //I didn't expect that, but it makes sense if you think long enough about it,
-            //  and it's the only option that makes the tests pass.
-
             wagonOption1 = FillWagons(animals.OrderByDescending(animal => animal.IsCarnivore).ThenByDescending(animal => animal.Size).ToList());
             wagonOption2 = FillWagons(animals.OrderByDescending(animal => animal.Size).ThenByDescending(animal => animal.IsCarnivore).ToList());
 
